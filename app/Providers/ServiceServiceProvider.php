@@ -3,11 +3,15 @@
 namespace App\Providers;
 
 use App\Contracts\Services\ClassroomService\ClassroomServiceInterface;
+use App\Contracts\Services\CommentService\CommentServiceInterface;
 use App\Contracts\Services\StudentService\StudentServiceInterface;
 use App\Contracts\Services\TeacherService\TeacherServiceInterface;
+use App\Contracts\Services\TopicService\TopicServiceInterface;
 use App\Services\ClassroomService\ClassroomService;
+use App\Services\CommentService\CommentService;
 use App\Services\StudentService\StudentService;
 use App\Services\TeacherService\TeacherService;
+use App\Services\TopicService\TopicService;
 use Illuminate\Support\ServiceProvider;
 
 class ServiceServiceProvider extends ServiceProvider
@@ -38,6 +42,16 @@ class ServiceServiceProvider extends ServiceProvider
         $this->app->bind(
             StudentServiceInterface::class,
             StudentService::class
+        );
+
+        $this->app->bind(
+            TopicServiceInterface::class,
+            TopicService::class
+        );
+
+        $this->app->bind(
+            CommentServiceInterface::class,
+            CommentService::class
         );
     }
 }

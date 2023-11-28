@@ -24,6 +24,32 @@ class ClassroomController extends Controller
         }
     }
 
+    public function getClassroomByTeacher(Request $request)
+    {
+        $id = $request->teacher_id;
+
+        $data = $this->service->getClassroomByTeacher($id);
+
+        if ($data) {
+            return response(['data' => $data], 200);
+        } else {
+            return response(['message' => 'Classroom not found'], 404);
+        }
+    }
+
+    public function getClassroomByStudent(Request $request)
+    {
+        $id = $request->student_id;
+
+        $data = $this->service->getClassroomByStudent($id);
+
+        if ($data) {
+            return response(['data' => $data], 200);
+        } else {
+            return response(['message' => 'Classroom not found'], 404);
+        }
+    }
+
     public function store(Request $request)
     {
         $data = $request->all();
@@ -73,10 +99,6 @@ class ClassroomController extends Controller
     public function disenrollStudent(Request $request)
     {
         $classroomstudent_id = $request->classroomstudent_id;
-
-//        if (empty($data['classroomstudent_id'])) {
-//            return response(['message' => 'Student Classroom must be selected']);
-//        }
 
         if (!$this->service->checkDisenrolledStudent($classroomstudent_id)) {
             return response(['message' => 'This student not enrolled this class'], 422);

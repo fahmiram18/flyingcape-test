@@ -21,6 +21,23 @@ class ClassroomService implements ClassroomServiceInterface
         }
     }
 
+    public function getClassroomByTeacher($teacher_id)
+    {
+        return $this->classroom->newQuery()
+            ->where('teacher_id', $teacher_id)
+            ->get();
+    }
+
+    public function getClassroomByStudent($student_id)
+    {
+        $data = Classroom::whereHas('classroomStudents', function ($query) use ($student_id){
+            $query->where('student_id', $student_id);
+        })
+            ->get();
+
+        return $data;
+    }
+
     public function create($classroom)
     {
         $store = Classroom::create([

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\ClassroomStudent\ClassroomStudent;
 use App\Models\Teacher\Teacher;
 use App\Models\Topic\Topic;
 use App\Models\User\User;

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->foreignId('created_by')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
