@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
-Route::middleware('auth:sanctum')->group(function (){
+Route::middleware('auth:sanctum', 'checkPermission')->group(function (){
     Route::prefix('/classroom')->group(function (){
         Route::get('/', [\App\Http\Controllers\ClassroomController::class, 'get'])->name('classroom.get');
         Route::get('/get-by-teacher', [\App\Http\Controllers\ClassroomController::class, 'getClassroomByTeacher'])->name('classroom.get.by-teacher');
@@ -51,6 +52,4 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('/get-by-topic', [\App\Http\Controllers\CommentController::class, 'getCommentByTopic'])->name('comment.get.by-topic');
         Route::post('/', [\App\Http\Controllers\CommentController::class, 'store'])->name('comment.store');
     });
-
-    Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 });

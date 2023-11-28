@@ -32,7 +32,7 @@ class CommentService implements CommentServiceInterface
         $store = Comment::create([
             'topic_id' => $comment['topic_id'],
             'description' => $comment['description'],
-            'created_by' => 4,
+            'created_by' => \auth('sanctrum')->id(),
         ]);
 
         return $store;

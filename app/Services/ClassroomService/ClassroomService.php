@@ -5,6 +5,7 @@ namespace App\Services\ClassroomService;
 use App\Contracts\Services\ClassroomService\ClassroomServiceInterface;
 use App\Models\Classroom;
 use App\Models\ClassroomStudent;
+use Illuminate\Support\Facades\Auth;
 
 class ClassroomService implements ClassroomServiceInterface
 {
@@ -54,7 +55,7 @@ class ClassroomService implements ClassroomServiceInterface
         $store = ClassroomStudent::create([
             'classroom_id' => $data['classroom_id'],
             'student_id' => $data['student_id'],
-            'assigned_by' => 1,
+            'assigned_by' => \auth('sanctrum')->id(),
         ]);
 
         return $store;

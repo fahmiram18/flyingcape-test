@@ -32,7 +32,7 @@ class TopicService implements TopicServiceInterface
         $store = Topic::create([
             'classroom_id' => $topic['classroom_id'],
             'description' => $topic['description'],
-            'created_by' => 2,
+            'created_by' => \auth('sanctrum')->id(),
         ]);
 
         return $store;
