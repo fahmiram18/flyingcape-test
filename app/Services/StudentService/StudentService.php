@@ -30,13 +30,15 @@ class StudentService implements StudentServiceInterface
         ]);
 
         if ($store) {
-            User::create([
+            $user = User::create([
                 'username' => strtolower($student['firstname']).strtolower($student['surname']),
                 'email' => $student['email'],
                 'password' => Hash::make('student123'),
                 'role_id' => 3,
                 'parent_id' => $store->id
             ]);
+
+            $user->createToken('studenttoken')->plainTextToken;
         }
 
         return $store;

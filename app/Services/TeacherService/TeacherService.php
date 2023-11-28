@@ -31,13 +31,15 @@ class TeacherService implements TeacherServiceInterface
         ]);
 
         if ($store) {
-            User::create([
+            $user = User::create([
                 'username' => strtolower($teacher['firstname']).strtolower($teacher['surname']),
                 'email' => $teacher['email'],
                 'password' => Hash::make('teacher123'),
                 'role_id' => 2,
                 'parent_id' => $store->id
             ]);
+
+            $user->createToken('teachertoken')->plainTextToken;
         }
 
         return $store;

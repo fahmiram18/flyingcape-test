@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::updateOrCreate(
+        $user = User::updateOrCreate(
             ['id' => 1],
             [
                 'username' => 'admin',
@@ -24,5 +24,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('admin123'),
             ]
         );
+
+        $user->createToken('admintoken')->plainTextToken;
     }
 }
