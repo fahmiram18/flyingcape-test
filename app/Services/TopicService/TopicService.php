@@ -3,6 +3,7 @@
 namespace App\Services\TopicService;
 
 use App\Contracts\Services\TopicService\TopicServiceInterface;
+use App\Models\Classroom;
 use App\Models\Topic;
 
 class TopicService implements TopicServiceInterface
@@ -32,7 +33,7 @@ class TopicService implements TopicServiceInterface
         $store = Topic::create([
             'classroom_id' => $topic['classroom_id'],
             'description' => $topic['description'],
-            'created_by' => \auth('sanctrum')->id(),
+            'created_by' => \auth()->id(),
         ]);
 
         return $store;
@@ -43,5 +44,12 @@ class TopicService implements TopicServiceInterface
         $delete = Topic::where('id', $id)->delete();
 
         return $delete;
+    }
+
+    public function checkClassroom($id)
+    {
+        $data = Classroom::where('id', $id)->first();
+
+        return $data;
     }
 }

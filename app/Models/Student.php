@@ -25,6 +25,7 @@ class Student extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'parent_id', 'id');
+//        return User::where(['role_id' => 3, 'parent_id' => $this->user()->id])->first();
+//        return $this->hasOne(User::class, 'parent_id', 'id');
     }
 }

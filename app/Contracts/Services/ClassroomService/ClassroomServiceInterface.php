@@ -21,4 +21,8 @@ interface ClassroomServiceInterface
     public function disenrollStudent($classroomstudent_id);
 
     public function delete($id);
+
+    public function checkTeacher($id);
+
+    public function checkStudent($id);
 }

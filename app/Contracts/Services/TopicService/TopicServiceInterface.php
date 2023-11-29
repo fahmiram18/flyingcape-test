@@ -11,4 +11,6 @@ interface TopicServiceInterface
     public function create($topic);
 
     public function delete($id);
+
+    public function checkClassroom($id);
 }

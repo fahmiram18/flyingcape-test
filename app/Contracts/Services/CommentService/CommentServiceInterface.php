@@ -9,4 +9,6 @@ interface CommentServiceInterface
     public function getCommentByTopic($topic_id);
 
     public function create($comment);
+
+    public function checkTopic($id);
 }

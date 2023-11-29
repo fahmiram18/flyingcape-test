@@ -1,0 +1,6 @@
+@Flyingcape_test_HostAddress = http://localhost:5230
+
+GET {{Flyingcape_test_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

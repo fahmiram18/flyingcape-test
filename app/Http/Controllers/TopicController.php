@@ -42,11 +42,15 @@ class TopicController extends Controller
         $data = $request->all();
 
         if (empty($data['classroom_id'])) {
-            return response(['message' => 'Classroom must be selected']);
+            return response(['message' => 'Classroom must be selected'], 422);
+        }
+
+        if(!$this->service->checkClassroom($data['classroom_id'])) {
+            return response(['message' => 'Classroom not found'], 422);
         }
 
         if (empty($data['description'])) {
-            return response(['message' => 'Description must be filled']);
+            return response(['message' => 'Description must be filled'], 422);
         }
 
         $store = $this->service->create($data);

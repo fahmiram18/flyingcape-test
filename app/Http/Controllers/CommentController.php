@@ -42,11 +42,15 @@ class CommentController extends Controller
         $data = $request->all();
 
         if (empty($data['topic_id'])) {
-            return response(['message' => 'Topic must be selected']);
+            return response(['message' => 'Topic must be selected'], 422);
+        }
+
+        if(!$this->service->checkTopic($data['topic_id'])) {
+            return response(['message' => 'Topic not found'], 422);
         }
 
         if (empty($data['description'])) {
-            return response(['message' => 'Description must be filled']);
+            return response(['message' => 'Description must be filled'], 422);
         }
 
         $store = $this->service->create($data);

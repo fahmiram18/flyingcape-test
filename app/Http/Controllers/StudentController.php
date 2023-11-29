@@ -29,15 +29,15 @@ class StudentController extends Controller
         $data = $request->all();
 
         if (empty($data['firstname'])) {
-            return response(['message' => 'First Name must be filled']);
+            return response(['message' => 'First Name must be filled'], 422);
         }
 
         if (empty($data['surname'])) {
-            return response(['message' => 'Surname must be filled']);
+            return response(['message' => 'Surname must be filled'], 422);
         }
 
         if (empty($data['email'])) {
-            return response(['message' => 'E-mail must be filled']);
+            return response(['message' => 'E-mail must be filled'], 422);
         }
 
         $store = $this->service->create($data);

@@ -55,11 +55,15 @@ class ClassroomController extends Controller
         $data = $request->all();
 
         if (empty($data['name'])) {
-            return response(['message' => 'Classroom Name must be filled']);
+            return response(['message' => 'Classroom Name must be filled'], 422);
         }
 
         if (empty($data['teacher_id'])) {
-            return response(['message' => 'Teacher must be selected']);
+            return response(['message' => 'Teacher must be selected'], 422);
+        }
+
+        if(!$this->service->checkTeacher($data['teacher_id'])) {
+            return response(['message' => 'Teacher not found'], 422);
         }
 
         $store = $this->service->create($data);
@@ -76,11 +80,19 @@ class ClassroomController extends Controller
         $data = $request->all();
 
         if (empty($data['classroom_id'])) {
-            return response(['message' => 'Classroom must be selected']);
+            return response(['message' => 'Classroom must be selected'], 422);
+        }
+
+        if(!$this->service->get($data['classroom_id'])) {
+            return response(['message' => 'Classroom not found'], 422);
         }
 
         if (empty($data['student_id'])) {
-            return response(['message' => 'Student must be selected']);
+            return response(['message' => 'Student must be selected'], 422);
+        }
+
+        if(!$this->service->checkStudent($data['student_id'])) {
+            return response(['message' => 'Student not found'], 422);
         }
 
         if ($this->service->checkEnrolledStudent($data)) {

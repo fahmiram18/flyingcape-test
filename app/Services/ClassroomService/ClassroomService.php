@@ -5,6 +5,8 @@ namespace App\Services\ClassroomService;
 use App\Contracts\Services\ClassroomService\ClassroomServiceInterface;
 use App\Models\Classroom;
 use App\Models\ClassroomStudent;
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Auth;
 
 class ClassroomService implements ClassroomServiceInterface
@@ -44,7 +46,7 @@ class ClassroomService implements ClassroomServiceInterface
         $store = Classroom::create([
             'name' => $classroom['name'],
             'teacher_id' => $classroom['teacher_id'],
-            'created_by' => 1,
+            'created_by' => \auth()->id(),
         ]);
 
         return $store;
@@ -55,7 +57,7 @@ class ClassroomService implements ClassroomServiceInterface
         $store = ClassroomStudent::create([
             'classroom_id' => $data['classroom_id'],
             'student_id' => $data['student_id'],
-            'assigned_by' => \auth('sanctrum')->id(),
+            'assigned_by' => \auth()->id(),
         ]);
 
         return $store;
@@ -88,6 +90,27 @@ class ClassroomService implements ClassroomServiceInterface
     public function checkDisenrolledStudent($classroomstudent_id)
     {
         $data = ClassroomStudent::where('id', $classroomstudent_id)->first();
+
+        return $data;
+    }
+
+    public function checkClassroom($id)
+    {
+        $data = Teacher::where('id', $id)->first();
+
+        return $data;
+    }
+
+    public function checkTeacher($id)
+    {
+        $data = Teacher::where('id', $id)->first();
+
+        return $data;
+    }
+
+    public function checkStudent($id)
+    {
+        $data = Student::where('id', $id)->first();
 
         return $data;
     }
