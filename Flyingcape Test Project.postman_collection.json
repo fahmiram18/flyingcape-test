@@ -1,0 +1,721 @@
+{
+	"info": {
+		"_postman_id": "2f710a7c-256b-4c9a-8ab0-9cb6e922ecc7",
+		"name": "Flyingcape Test Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "12574478"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Teacher",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/teacher?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"teacher"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "firstname",
+											"value": "John",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Doe",
+											"type": "text"
+										},
+										{
+											"key": "expertise",
+											"value": "Software Engineering",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "johndoe@mail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{baseurl}}/teacher"
+							},
+							"response": []
+						},
+						{
+							"name": "destroy",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/teacher?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"teacher"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Student",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/student",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"student"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "firstname",
+											"value": "Jimmy",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Due",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "jimmydue@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{baseurl}}/student"
+							},
+							"response": []
+						},
+						{
+							"name": "destroy",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/student?id=1",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"student"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Classroom",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseurl}}/classroom"
+					},
+					"response": []
+				},
+				{
+					"name": "get by teacher",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/classroom/get-by-teacher?teacher_id=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"classroom",
+								"get-by-teacher"
+							],
+							"query": [
+								{
+									"key": "teacher_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by student",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/classroom/get-by-student?student_id=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"classroom",
+								"get-by-student"
+							],
+							"query": [
+								{
+									"key": "student_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Algorithm",
+									"type": "text"
+								},
+								{
+									"key": "teacher_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseurl}}/classroom"
+					},
+					"response": []
+				},
+				{
+					"name": "enroll student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "classroom_id",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "student_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseurl}}/classroom/enroll-student"
+					},
+					"response": []
+				},
+				{
+					"name": "disenroll student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseurl}}/classroom/disenroll-student?classroomstudent_id=5",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"classroom",
+								"disenroll-student"
+							],
+							"query": [
+								{
+									"key": "classroomstudent_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/classroom?id=4",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"classroom"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Topic",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/topic?id=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"topic"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by classroom",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/topic/get-by-classroom?classroom_id=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"topic",
+								"get-by-classroom"
+							],
+							"query": [
+								{
+									"key": "classroom_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "classroom_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseurl}}/topic"
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/topic?id=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"topic"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/comment?id=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"comment"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by topic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/comment/get-by-topic?topic_id=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"comment",
+								"get-by-topic"
+							],
+							"query": [
+								{
+									"key": "topic_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "topic_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Test Comment",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseurl}}/comment"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@flyingcape.com.sg",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{baseurl}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "{{baseurl}}/logout"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
