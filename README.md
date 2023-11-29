@@ -49,6 +49,18 @@ Start the server
 php artisan serve
 ```
 
+# Testing
+
+Duplicate the original database
+```sql
+CREATE TABLE db_flyingcape_test LIKE testing_db_flyingcape_test;
+```
+
+Run Test
+```bash
+php artisan test --testsuite=Feature --env=testing
+```
+
 # Request Collection
 
 Import Flyingcape Test Project.postman_collection.json on Postman/Insomnia to see Request Collection.
